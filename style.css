@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
+  color: #222;
+}
+main {
+  max-width: 880px;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+}
+h2 {
+  font-size: 1.5rem;
+  border-left: 4px solid #3b82f6;
+  padding-left: 12px;
+  margin-top: 2rem;
+}
+label {
+  font-weight: bold;
+  margin-top: 1rem;
+  display: block;
+}
+input,
+select,
+button,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+button {
+  background-color: rgba(35, 130, 226, 0.144);
+  color: rgb(35, 131, 226);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+button:hover:not([disabled]) {
+    background-color:    rgba(35, 130, 226, 0.26);
+}
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  align-items: flex-start;
+}
+.form-section {
+  flex: 1;
+  min-width: 300px;
+}
+.qr-preview {
+  width: 380px;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.qr-preview::before {
+  content: "Preview";
+  position: absolute;
+  bottom: 8px;
+  font-size: 12px;
+  color: #aaa;
+}
+#qrcode,
+#previewImage {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+  background-color: #fff;
+}
+.result {
+  margin-top: 1rem;
+  white-space: pre-wrap;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 1rem;
+  min-height: 50px;
+}
+.message {
+  margin-top: 0.5rem;
+  font-size: 14px;
+  color: #4b5563;
+}
+#finalOutput {
+  margin-top: 2rem;
+  /* 기존 배경/테두리는 아래 .final-wrapper로 이동 */
+}
+/* 최종 출력 카드 형태 */
+#finalOutput .final-wrapper {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 1rem;
+  line-height: 1.6;
+}
+#finalOutput .final-author {
+  margin-bottom: 0.6rem;
+  font-weight: bold;
+  color: #111;
+}
+#finalOutput .final-text {
+  color: #333;
+}
+@media screen and (max-width: 768px) {
+  .flex-row {
+    flex-direction: column;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  width: 15px;
+  height: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+  display: none;
+}
