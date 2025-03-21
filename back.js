@@ -1,4 +1,5 @@
-let scannedData = "";
+
+  let scannedData = "";
   let lastDecrypted = "";
   let qrRecognized = false;
 
@@ -175,12 +176,13 @@ let scannedData = "";
           if (!resultText) throw new Error("복호화 실패");
 
           const realData = JSON.parse(resultText);
+          // 만료여부
           if (realData.expiresIn && Date.now() > realData.createdAt + realData.expiresIn) {
             showMessage("⏰ QR 코드가 만료되었습니다.");
           } else {
             lastDecrypted = realData.text;
             showMessage("✅ 복호화 성공!");
-            renderDecryptedOutput(realData.author, realData.text, realData.createdAt, realData.expiresIn);
+            renderDecryptedOutput(realData.author, realData.text);
           }
         } else {
           // 평문
@@ -189,9 +191,10 @@ let scannedData = "";
           } else {
             lastDecrypted = parsed.text;
             showMessage("✅ 해석 성공(암호화 없음)!");
-            renderDecryptedOutput(parsed.author, parsed.text, parsed.createdAt, parsed.expiresIn);
+            renderDecryptedOutput(parsed.author, parsed.text);
           }
         }
+
       } catch (e) {
         console.error(e);
         showMessage("❌ 복호화 실패: 비밀번호가 틀렸거나 QR 내용이 잘못되었습니다.");
@@ -200,28 +203,15 @@ let scannedData = "";
     }, 300);
   }
 
-  // 작성자, 내용 뿐 아니라 "생성 일시", "만료 일시"도 표시
-  function renderDecryptedOutput(author, text, createdAt, expiresIn) {
-    const container = document.getElementById("finalOutput");
-
-    // 날짜 변환
-    const createdDate = new Date(createdAt).toLocaleString("ko-KR");
-    let expireLine = "";
-    if (expiresIn) {
-      const expireDate = new Date(createdAt + expiresIn).toLocaleString("ko-KR");
-      expireLine = `<div class="final-expire">만료 일시: ${expireDate}</div>`;
-    }
-
+  function renderDecryptedOutput(author, text) {
+    // 작성자 먼저, 내용은 아래. 작성자가 없으면 생략
     let html = `<div class="final-wrapper">`;
     if (author) {
-        html += `<div class="final-author">작성자: ${author}</div>`;
-      }
-    html += `<div class="final-date">생성 일시: ${createdDate}</div>`;
-    html += expireLine; // 만료일시가 있으면 표시
+      html += `<div class="final-author">작성자: ${author}</div>`;
+    }
     html += `<div class="final-text">내용: ${text}</div>`;
     html += `</div>`;
-
-    container.innerHTML = html;
+    document.getElementById("finalOutput").innerHTML = html;
   }
 
   function resetDecryptUI() {

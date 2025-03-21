@@ -124,7 +124,17 @@ button[disabled] {
   font-weight: bold;
   color: #111;
 }
+
+#finalOutput .final-date{
+  font-size: 14px;
+}
+
+#finalOutput .final-expire{
+  font-size: 14px;
+}
+
 #finalOutput .final-text {
+  margin-top: 20px;
   color: #333;
 }
 @media screen and (max-width: 768px) {
