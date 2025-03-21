@@ -64,3 +64,10 @@
 git clone https://github.com/Mooneunjun/qr-secure.git
 cd qr-secure
 open index.html
+```
+
+### 바로 테스트 해보기 
+
+```bash
+https://mooneunjun.github.io/qr-secure/
+```
