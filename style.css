@@ -33,7 +33,7 @@ button,
 textarea {
   width: 100%;
   padding: 10px;
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 15px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
@@ -68,8 +68,8 @@ button[disabled] {
   min-width: 300px;
 }
 .qr-preview {
-  width: 380px;
-  height: 380px;
+  width: 360px;
+  height: 360px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,8 +88,8 @@ button[disabled] {
 }
 #qrcode,
 #previewImage {
-  width: 320px;
-  height: 320px;
+  width: 300px;
+  height: 300px;
   object-fit: contain;
   background-color: #fff;
 }
